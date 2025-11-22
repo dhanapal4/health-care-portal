@@ -103,7 +103,7 @@ const WellnessGoalsForm = () => {
             setSnackSeverity('success');
             setSnackOpen(true);
             // optionally navigate to list after short delay
-            setTimeout(() => navigate('/list-goals'), 800);
+            setTimeout(() => navigate('/dashboard/list-goals'), 800);
         } catch (err) {
             setSnackMsg('Failed to add goal');
             setSnackSeverity('error');

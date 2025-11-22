@@ -21,6 +21,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/hcp-dashboard" element={<HealthCareDashboard />} />
         <Route path="/dashboard" element={<DashboardPage />}>
+          <Route path="list-goals" element={<NotFoundPage />} />
           <Route index element={<ProfilePage />} />
           <Route path="my-profile" element={<ProfilePage />} />
           <Route path="wellness-goals" element={<WellnessGoalsList />} />
