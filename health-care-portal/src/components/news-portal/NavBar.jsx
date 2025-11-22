@@ -33,7 +33,7 @@ export default function NavBar() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/healthtopics" onClick={close}>
+              <NavLink to="/health-topics" onClick={close}>
                 Health Topics
               </NavLink>
             </li>
