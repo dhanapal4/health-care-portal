@@ -47,6 +47,11 @@ export default function NavBar() {
                 Contact
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/login" onClick={close}>
+                Login
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>
