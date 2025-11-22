@@ -1,0 +1,30 @@
+.container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #0f172a;
+  padding: 24px;
+}
+
+.code {
+  font-size: 3.2rem;
+  margin: 0;
+}
+
+.message {
+  font-size: 1.05rem;
+  color: #475569;
+  margin: 0;
+}
+
+.home {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #0ea5a4;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+}

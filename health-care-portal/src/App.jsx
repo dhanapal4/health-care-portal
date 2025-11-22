@@ -1,24 +1,27 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/news-portal/Home.jsx";
-import NavBar from "./components/news-portal/NavBar.jsx";
+import React, { useState } from "react";
 import "./App.css";
-import Contact from "./components/news-portal/Contact.jsx";
-import HealthTopics from "./components/news-portal/HealthTopics.jsx";
-import Services from "./components/news-portal/Services.jsx";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import InfoSection from "./components/InfoSection";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
-    <BrowserRouter>
-      <NavBar />
+    <div className="site-root">
+      <Header />
+
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/healthtopics" element={<HealthTopics />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Hero onLogin={() => setShowLogin(true)} />
+        <InfoSection />
       </main>
-    </BrowserRouter>
+
+      <Footer />
+
+      <Login open={showLogin} onClose={() => setShowLogin(false)} />
+    </div>
   );
 }
 
