@@ -11,8 +11,6 @@ function App() {
 
   return (
     <div className="site-root">
-      <Header />
-
       <main>
         <Hero onLogin={() => setShowLogin(true)} />
         <InfoSection />

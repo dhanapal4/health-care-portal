@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -6,12 +7,14 @@ export default function Header() {
       <div className="container header-inner">
         <div className="brand">HCLTech Healthcare</div>
         <nav className="main-nav">
-          <a href="#">Home</a>
-          <a href="#topics">Health Topics</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
+          <NavLink to="/" end>
+            Home
+          </NavLink>
+          <NavLink to="/health-topics">Health Topics</NavLink>
+          <NavLink to="/services">Services</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </nav>
       </div>
     </header>
-  )
+  );
 }

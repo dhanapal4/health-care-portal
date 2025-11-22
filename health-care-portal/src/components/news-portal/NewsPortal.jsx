@@ -1,27 +1,29 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import InfoSection from "./components/InfoSection";
-import Footer from "./components/Footer";
-import Login from "./components/Login";
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-function App() {
-  const [showLogin, setShowLogin] = useState(false);
-
+import NavBar from "./NavBar";
+import Home from "./Home";
+import HealthTopics from "./HealthTopics";
+import Services from "./Services";
+import Contact from "./Contact";
+export default function NewsPortalRoutes() {
   return (
-    <div className="site-root">
-      <Header />
+    <BrowserRouter>
+      <div className="news-portal-root">
+        <NavBar />
 
-      <main>
-        <Hero onLogin={() => setShowLogin(true)} />
-        <InfoSection />
-      </main>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/healthtopics" element={<HealthTopics />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
 
-      <Footer />
-
-      <Login open={showLogin} onClose={() => setShowLogin(false)} />
-    </div>
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;

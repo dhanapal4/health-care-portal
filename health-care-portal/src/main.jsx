@@ -1,18 +1,26 @@
-import { lazy, StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './index.css'
-import App from './App.jsx'
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx'
-import WellnessGoalsList from './pages/WellnessGoals/WellnessGoalsList.jsx'
+import { lazy, StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+import App from "./App.jsx";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
+import WellnessGoalsList from "./pages/WellnessGoals/WellnessGoalsList.jsx";
+import Contact from "./components/news-portal/Contact.jsx";
+import Services from "./components/news-portal/Services.jsx";
+import HealthTopics from "./components/news-portal/HealthTopics.jsx";
+import Header from "./components/Header.jsx";
+import NavBar from "./components/news-portal/NavBar.jsx";
 
-const WellnessGoalsForm = lazy(() => import('./pages/WellnessGoals/WellnessGoalsForm.jsx'));
-const LoginPage = lazy(() => import('./pages/LoginPage'));
-const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const WellnessGoalsForm = lazy(() =>
+  import("./pages/WellnessGoals/WellnessGoalsForm.jsx")
+);
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<LoginPage />} />
@@ -20,7 +28,10 @@ createRoot(document.getElementById('root')).render(
         <Route path="/list-goals" element={<WellnessGoalsList />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/health-topics" element={<HealthTopics />} />
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
-)
+  </StrictMode>
+);

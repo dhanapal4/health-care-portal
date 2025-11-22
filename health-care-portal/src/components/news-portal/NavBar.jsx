@@ -12,7 +12,7 @@ export default function NavBar() {
       <div className="nc-container">
         <div className="nc-brand">
           <NavLink to="/" className="nc-logo" onClick={close} end>
-            HealthCare
+            HCLTech Healthcare
           </NavLink>
 
           <button
