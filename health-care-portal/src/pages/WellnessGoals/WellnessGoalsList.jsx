@@ -86,22 +86,25 @@ const GoalCard = ({ goal }) => {
 const WellnessGoalsList = () => {
     const goals = useGoalsStore((state) => state.goals); // Fetch goals from Zustand store
 
-    console.log("Goals..",goals)
+    console.log("Goals..", goals)
 
     if (!Array.isArray(goals) || goals.length === 0) {
-        return(
-        <>
-            <div className={styles.empty}>No wellness goals yet.</div>
-            <Link to={"/dashboard/add-goal"}>+Add</Link>
-        </>)
+        return (
+            <>
+                <div className={styles.empty}>No wellness goals yet.</div>
+                <Link to={"/dashboard/add-goal"}>+Add</Link>
+            </>)
     }
 
     return (
-        <section className={styles.list}>
-            {goals.map((g) => (
-                <GoalCard key={g.id} goal={g} />
-            ))}
-        </section>
+        <>
+            <Link to={"/dashboard/add-goal"}>+Add</Link>
+            <section className={styles.list}>
+                {goals.map((g) => (
+                    <GoalCard key={g.id} goal={g} />
+                ))}
+            </section>
+        </>
     );
 };
 
