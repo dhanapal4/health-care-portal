@@ -25,6 +25,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="my-profile" element={<ProfilePage />} />
           <Route path="wellness-goals" element={<WellnessGoalsList />} />
           <Route path="add-goal" element={<WellnessGoalsForm />} />
+          <Route path="list-goals" element={<WellnessGoalsList />} />
         </Route>
       </Routes>
     </BrowserRouter>
