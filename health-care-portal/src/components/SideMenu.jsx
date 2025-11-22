@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function SideMenu(){
+    const linkClass = ({isActive}) => isActive ? 'menu-item active' : 'menu-item'
+
     return (
-        <aside class="menucontainer">
-                    <h2>Health</h2>
-                    <div class="menu-item active">Dashboard</div>
-                    <div class="menu-item">My profile</div>
-                    <Link className="menu-item" to={"/list-goals"}>Wellness Goals</Link>
-                    <div class="menu-item">Messages</div>
-                    <div class="menu-item">Logout</div>
-                </aside>
+        <aside className="menucontainer">
+            <h2>Health</h2>
+            <NavLink to="/dashboard" className={linkClass}>Dashboard</NavLink>
+            <NavLink to="/dashboard/my-profile" className={linkClass}>My profile</NavLink>
+            <NavLink to="/dashboard/wellness-goals" className={linkClass}>Wellness Goals</NavLink>
+            <div className="menu-item">Messages</div>
+            <div className="menu-item">Logout</div>
+        </aside>
     )
 }

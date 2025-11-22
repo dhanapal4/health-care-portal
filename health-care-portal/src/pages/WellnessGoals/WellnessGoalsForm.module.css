@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: center;
     height: 100vh; /* Full height */
-    width: 100vw; /* Full width */
     background-color: #f9fafb; /* Light background color */
     padding: 20px; /* Optional padding */
 }
