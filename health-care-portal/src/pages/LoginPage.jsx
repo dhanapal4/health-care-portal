@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function LoginPage(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [role, setRole] = useState('Healthcare Provider')
+  const navigate = useNavigate()
 
   function submit(e){
     e.preventDefault()
-    console.log('login page submit', {email, password, role})
-    // TODO: integrate real auth
-    alert('Submitted — check console (placeholder)')
+    // Redirect based on role selection (no real auth yet)
+    if(role === 'Patient'){
+      navigate('/dashboard')
+    } else {
+      navigate('/hcp-dashboard')
+    }
   }
 
   return (

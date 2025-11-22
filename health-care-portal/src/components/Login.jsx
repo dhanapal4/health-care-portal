@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login({ open, onClose }){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [role, setRole] = useState('Healthcare Provider')
   const overlayRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(()=>{
     function onKey(e){
@@ -22,8 +24,12 @@ export default function Login({ open, onClose }){
 
   function submit(e){
     e.preventDefault()
-    // Placeholder: handle authentication here
-    console.log('login', {email, password, role})
+    // Redirect based on role selection (no auth yet)
+    if(role === 'Patient'){
+      navigate('/dashboard')
+    } else {
+      navigate('/hcp-dashboard')
+    }
     onClose()
   }
 
