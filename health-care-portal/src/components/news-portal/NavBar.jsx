@@ -42,6 +42,12 @@ export default function NavBar() {
                 Services
               </NavLink>
             </li>
+
+            <li>
+              <NavLink to="/about-us" onClick={close}>
+                About us
+              </NavLink>
+            </li>
             <li>
               <NavLink to="/contact" onClick={close}>
                 Contact

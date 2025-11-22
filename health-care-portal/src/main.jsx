@@ -10,6 +10,8 @@ import Services from "./components/news-portal/Services.jsx";
 import HealthTopics from "./components/news-portal/HealthTopics.jsx";
 import Header from "./components/Header.jsx";
 import NavBar from "./components/news-portal/NavBar.jsx";
+import Home from "./components/news-portal/Home.jsx";
+import AboutUs from "./components/news-portal/AboutUs.jsx";
 
 const WellnessGoalsForm = lazy(() =>
   import("./pages/WellnessGoals/WellnessGoalsForm.jsx")
@@ -22,7 +24,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/add-goal" element={<WellnessGoalsForm />} />
         <Route path="/list-goals" element={<WellnessGoalsList />} />
@@ -31,6 +33,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} />
         <Route path="/health-topics" element={<HealthTopics />} />
+        <Route path="/about-us" element={<AboutUs />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
