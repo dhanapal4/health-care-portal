@@ -53,13 +53,17 @@
 }
 
 .ht-card button {
-  align-self: flex-start;
+  align-self: center !important; /* center horizontally inside the flex column card */
+  display: inline-flex;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
   background: #0747a6;
   color: #fff;
   border: none;
-  padding: 0.45rem 0.75rem;
-  border-radius: 6px;
   cursor: pointer;
+  min-width: 120px;
+  justify-content: center;
+  gap: 0.25rem;
 }
 
 .ht-card button:hover {
