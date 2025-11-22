@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx'
 import WellnessGoalsList from './pages/WellnessGoals/WellnessGoalsList.jsx'
+import HealthCareDashboard from './pages/HealthCareDashboard.jsx';
 
 const WellnessGoalsForm = lazy(() => import('./pages/WellnessGoals/WellnessGoalsForm.jsx'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/list-goals" element={<WellnessGoalsList />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/hcp-dashboard" element={<HealthCareDashboard />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
