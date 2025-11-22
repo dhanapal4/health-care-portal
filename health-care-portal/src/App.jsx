@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div className="site-root">
-      <NavBar />
       <main>
         <Hero onLogin={() => setShowLogin(true)} />
 
