@@ -17,12 +17,15 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/add-goal" element={<WellnessGoalsForm />} />
-        <Route path="/list-goals" element={<WellnessGoalsList />} />
+        
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/hcp-dashboard" element={<HealthCareDashboard />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard" element={<DashboardPage />}>
+          <Route index element={<ProfilePage />} />
+          <Route path="my-profile" element={<ProfilePage />} />
+          <Route path="wellness-goals" element={<WellnessGoalsList />} />
+          <Route path="add-goal" element={<WellnessGoalsForm />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

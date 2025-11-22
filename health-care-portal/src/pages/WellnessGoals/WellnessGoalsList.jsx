@@ -92,7 +92,7 @@ const WellnessGoalsList = () => {
         return(
         <>
             <div className={styles.empty}>No wellness goals yet.</div>
-            <Link to={"/add-goal"}>+Add</Link>
+            <Link to={"/dashboard/add-goal"}>+Add</Link>
         </>)
     }
 
