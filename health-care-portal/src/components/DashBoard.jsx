@@ -7,7 +7,7 @@ export default function DashBoard() {
         <>
             <div class="dashboard-container">
                 <SideMenu />
-                  <main class="dashboard-main">
+                <main class="dashboard-main">
                     <h2>Welcome, David</h2>
                     <WellnessGoals />
                 </main>

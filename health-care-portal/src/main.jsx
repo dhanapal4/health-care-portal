@@ -6,10 +6,10 @@ import App from './App.jsx'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage.jsx'
 import WellnessGoalsList from './pages/WellnessGoals/WellnessGoalsList.jsx'
 import HealthCareDashboard from './pages/HealthCareDashboard.jsx';
-import Dashboard from './components/DashBoard.jsx';
 const WellnessGoalsForm = lazy(() => import('./pages/WellnessGoals/WellnessGoalsForm.jsx'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const DashboardPage = lazy(() => import('./components/DashBoard.jsx'));
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/hcp-dashboard" element={<HealthCareDashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

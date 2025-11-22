@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './WellnessGoalsList.module.css';
+import useGoalsStore from '../../store/useGoalsStore';
+import { Link } from 'react-router-dom';
 
 const GoalCard = ({ goal }) => {
     const { title, description, priority, targetDate, predefined, metric = {} } = goal;
@@ -81,9 +83,17 @@ const GoalCard = ({ goal }) => {
     );
 };
 
-const WellnessGoalsList = ({ goals = [] }) => {
+const WellnessGoalsList = () => {
+    const goals = useGoalsStore((state) => state.goals); // Fetch goals from Zustand store
+
+    console.log("Goals..",goals)
+
     if (!Array.isArray(goals) || goals.length === 0) {
-        return <div className={styles.empty}>No wellness goals yet.</div>;
+        return(
+        <>
+            <div className={styles.empty}>No wellness goals yet.</div>
+            <Link to={"/add-goal"}>+Add</Link>
+        </>)
     }
 
     return (
