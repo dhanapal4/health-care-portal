@@ -5,14 +5,17 @@ import Hero from "./components/Hero";
 import InfoSection from "./components/InfoSection";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
+import NavBar from "./components/news-portal/NavBar";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <div className="site-root">
+      <NavBar />
       <main>
         <Hero onLogin={() => setShowLogin(true)} />
+
         <InfoSection />
       </main>
 

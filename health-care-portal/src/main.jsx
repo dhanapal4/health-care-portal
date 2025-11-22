@@ -20,7 +20,6 @@ const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <NavBar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<LoginPage />} />
