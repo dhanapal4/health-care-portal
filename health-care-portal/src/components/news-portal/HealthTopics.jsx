@@ -1,10 +1,11 @@
 // ...existing code...
 import React, { useState } from "react";
 import "./HealthTopics.css";
+import { useNavigate } from "react-router-dom";
 
 export default function HealthTopics() {
   const [query, setQuery] = useState("");
-
+  const navigate = useNavigate();
   const topics = [
     {
       id: 1,
@@ -58,9 +59,8 @@ export default function HealthTopics() {
               <button
                 type="button"
                 onClick={() => {
-                  // placeholder action — navigate to a topic route or open details
-                  // for now just log and focus
                   console.log("open topic", t.id);
+                  navigate("/contact", { state: { topic: t.title } });
                 }}
               >
                 Learn more
