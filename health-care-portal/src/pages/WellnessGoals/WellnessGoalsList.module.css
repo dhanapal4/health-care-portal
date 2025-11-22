@@ -1,0 +1,129 @@
+.list {
+    display: grid;
+    gap: 12px;
+    padding: 12px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #e6e9ee;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(20,20,40,0.04);
+}
+
+/* top row: icon, title, meta */
+.topRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    font-size: 20px;
+}
+
+.titleBlock {
+    flex: 1;
+}
+
+.title {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.sub {
+    font-size: 0.85rem;
+    color: #475569;
+}
+
+.rightMeta {
+    text-align: right;
+    min-width: 84px;
+}
+
+.priority {
+    font-size: 0.8rem;
+    color: #0f172a;
+    background: #eef2ff;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-transform: capitalize;
+}
+
+.date {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+/* body */
+.body {
+    margin-top: 6px;
+}
+
+/* big value line like "3620/6000 steps" */
+.bigValue {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+/* small inline meta (kcal/distance) */
+.metaInline {
+    display: flex;
+    gap: 12px;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.smallNote {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* progress bar */
+.progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progressBar {
+    flex: 1;
+    height: 12px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg,#fb7185,#f97316);
+    width: 0%;
+    transition: width .5s ease;
+}
+
+.pct {
+    min-width: 40px;
+    text-align: right;
+    font-weight: 600;
+    color: #0f172a;
+    font-size: 0.9rem;
+}
+
+/* empty state */
+.empty {
+    color: #64748b;
+    padding: 16px;
+}
