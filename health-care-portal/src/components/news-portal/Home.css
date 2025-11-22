@@ -1,0 +1,63 @@
+/* Layout for Home boxes */
+.news-home {
+    padding: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.news-home h1 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: #111827;
+}
+
+/* Responsive grid of cards */
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+/* Card styles (was .container) */
+.card {
+    background: #ffffff;
+    border: 1px solid #e6e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(16,24,40,0.04);
+    box-sizing: border-box;
+}
+
+.card h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.05rem;
+    color: #0747a6;
+}
+
+.card p {
+    margin: 0 0 1rem 0;
+    color: #374151;
+    line-height: 1.4;
+}
+
+/* Button */
+.card button {
+    background: #0747a6;
+    color: #ffffff;
+    border: none;
+    padding: 0.45rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.card button:hover {
+    background: #063a8a;
+}
+
+/* Small-screen tweaks */
+@media (max-width: 420px) {
+    .news-home { padding: 0.75rem; }
+    .news-home h1 { font-size: 1.25rem; }
+}
