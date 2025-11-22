@@ -69,6 +69,33 @@ body #root{
   .login-title{font-size:1.1rem}
 }
 
+/* Profile page styles */
+.profile-page{display:flex;justify-content:center;padding:3rem 0}
+.profile-card{width:720px;max-width:100%;background:#fff;border-radius:12px;padding:1.75rem;box-shadow:0 10px 30px rgba(10,30,40,0.06);border:1px solid rgba(12,24,30,0.03)}
+.profile-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.profile-header h2{margin:0;color:#12202a}
+.profile-actions{display:flex;gap:0.5rem;align-items:center}
+.profile-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.profile-form label{display:block}
+.profile-form input,.profile-form textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06)}
+.profile-form textarea{min-height:84px;resize:vertical}
+/* Ensure disabled inputs remain readable when not editing */
+.profile-form input:disabled,
+.profile-form textarea:disabled{
+  color: #111;
+  opacity: 1;
+  background: #fff;
+  cursor: default;
+}
+
+.btn{padding:0.55rem 0.9rem;border-radius:8px;border:none;cursor:pointer}
+.btn.primary{background:var(--blue-600);color:#fff;font-weight:700}
+.btn.ghost{background:transparent;border:1px solid rgba(15,23,42,0.08);color:#111;font-weight:600}
+
+@media (max-width:700px){
+  .profile-form{grid-template-columns:1fr}
+}
+
 
 .login-page-wrap {
   display: flex;
