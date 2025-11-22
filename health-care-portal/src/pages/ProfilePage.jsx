@@ -34,6 +34,7 @@ export default function ProfilePage(){
   })
 
   const [editing, setEditing] = useState(false)
+  const [errors, setErrors] = useState({})
 
   function handleChange(e){
     const {name, value} = e.target
@@ -42,6 +43,20 @@ export default function ProfilePage(){
 
   function save(e){
     e && e.preventDefault()
+    // validate required fields
+    const required = ['fullName','email','phone','dob','height','weight']
+    const missing = required.filter(k => {
+      const v = profile[k]
+      return v === undefined || v === null || (typeof v === 'string' && v.trim() === '')
+    })
+    if(missing.length > 0){
+      const errObj = {}
+      missing.forEach(k => errObj[k] = true)
+      setErrors(errObj)
+      setEditing(true)
+      return
+    }
+    setErrors({})
     localStorage.setItem(STORAGE_KEY, JSON.stringify(profile))
     setEditing(false)
   }
@@ -78,32 +93,38 @@ export default function ProfilePage(){
         <form className="grid md:grid-cols-2 gap-4" onSubmit={save}>
           <label className="block">
             <div className="text-sm font-semibold mb-1">Full name</div>
-            <input className="w-full px-3 py-2 border rounded-md bg-white text-slate-900" name="fullName" value={profile.fullName} onChange={handleChange} disabled={!editing} />
+            <input className={`w-full px-3 py-2 border rounded-md bg-white text-slate-900 ${errors.fullName ? 'border-red-500' : ''}`} name="fullName" value={profile.fullName} onChange={handleChange} disabled={!editing} />
+            {errors.fullName && <div className="text-red-600 text-sm mt-1">Full name is required</div>}
           </label>
 
           <label className="block">
             <div className="text-sm font-semibold mb-1">Email</div>
-            <input className="w-full px-3 py-2 border rounded-md bg-white text-slate-900" name="email" value={profile.email} onChange={handleChange} disabled={!editing} />
+            <input className={`w-full px-3 py-2 border rounded-md bg-white text-slate-900 ${errors.email ? 'border-red-500' : ''}`} name="email" value={profile.email} onChange={handleChange} disabled={!editing} />
+            {errors.email && <div className="text-red-600 text-sm mt-1">Email is required</div>}
           </label>
 
           <label className="block">
             <div className="text-sm font-semibold mb-1">Phone</div>
-            <input className="w-full px-3 py-2 border rounded-md bg-white text-slate-900" name="phone" value={profile.phone} onChange={handleChange} disabled={!editing} />
+            <input className={`w-full px-3 py-2 border rounded-md bg-white text-slate-900 ${errors.phone ? 'border-red-500' : ''}`} name="phone" value={profile.phone} onChange={handleChange} disabled={!editing} />
+            {errors.phone && <div className="text-red-600 text-sm mt-1">Phone is required</div>}
           </label>
 
           <label className="block">
             <div className="text-sm font-semibold mb-1">Date of birth</div>
-            <input className="w-full px-3 py-2 border rounded-md bg-white text-slate-900" name="dob" type="date" value={profile.dob} onChange={handleChange} disabled={!editing} />
+            <input className={`w-full px-3 py-2 border rounded-md bg-white text-slate-900 ${errors.dob ? 'border-red-500' : ''}`} name="dob" type="date" value={profile.dob} onChange={handleChange} disabled={!editing} />
+            {errors.dob && <div className="text-red-600 text-sm mt-1">Date of birth is required</div>}
           </label>
 
           <label className="block">
             <div className="text-sm font-semibold mb-1">Height</div>
-            <input className="w-full px-3 py-2 border rounded-md bg-white text-slate-900" name="height" value={profile.height} onChange={handleChange} disabled={!editing} placeholder="e.g. 170 cm" />
+            <input className={`w-full px-3 py-2 border rounded-md bg-white text-slate-900 ${errors.height ? 'border-red-500' : ''}`} name="height" value={profile.height} onChange={handleChange} disabled={!editing} placeholder="e.g. 170 cm" />
+            {errors.height && <div className="text-red-600 text-sm mt-1">Height is required</div>}
           </label>
 
           <label className="block">
             <div className="text-sm font-semibold mb-1">Weight</div>
-            <input className="w-full px-3 py-2 border rounded-md bg-white text-slate-900" name="weight" value={profile.weight} onChange={handleChange} disabled={!editing} placeholder="e.g. 68 kg" />
+            <input className={`w-full px-3 py-2 border rounded-md bg-white text-slate-900 ${errors.weight ? 'border-red-500' : ''}`} name="weight" value={profile.weight} onChange={handleChange} disabled={!editing} placeholder="e.g. 68 kg" />
+            {errors.weight && <div className="text-red-600 text-sm mt-1">Weight is required</div>}
           </label>
 
           <label className="block md:col-span-2">
