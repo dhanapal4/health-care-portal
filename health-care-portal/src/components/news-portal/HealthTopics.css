@@ -1,0 +1,76 @@
+.healthtopics-root {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.ht-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.ht-container h1 {
+  margin: 0 0 0.75rem 0;
+  color: #0747a6;
+}
+
+.ht-search {
+  margin-bottom: 1rem;
+}
+.ht-search input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 0.95rem;
+}
+
+.ht-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.ht-card {
+  background: #fff;
+  border: 1px solid #e6e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ht-card h2 {
+  margin: 0 0 0.5rem 0;
+  color: #111827;
+  font-size: 1.05rem;
+}
+.ht-card p {
+  margin: 0 0 1rem 0;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.ht-card button {
+  align-self: flex-start;
+  background: #0747a6;
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ht-card button:hover {
+  background: #063a8a;
+}
+
+.ht-empty {
+  color: #6b7280;
+}
+@media (max-width: 420px) {
+  .ht-container {
+    padding: 0;
+  }
+}

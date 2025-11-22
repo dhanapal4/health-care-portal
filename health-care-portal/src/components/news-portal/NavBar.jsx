@@ -1,44 +1,55 @@
 import React, { useState } from "react";
-import './NavBar.css';
+import { NavLink } from "react-router-dom";
+import "./NavBar.css";
+
 export default function NavBar() {
-    const [open, setOpen] = useState(false);
-    const toggle = () => setOpen((v) => !v);
+  const [open, setOpen] = useState(false);
+  const toggle = () => setOpen((v) => !v);
+  const close = () => setOpen(false);
 
-    return (
-        <header className="nc-navbar">
-            <div className="nc-container">
-                <div className="nc-brand">
-                    <a href="/" className="nc-logo" aria-label="Health Care Portal">
-                        HealthCare
-                    </a>
+  return (
+    <header className="nc-navbar">
+      <div className="nc-container">
+        <div className="nc-brand">
+          <NavLink to="/" className="nc-logo" onClick={close} end>
+            HealthCare
+          </NavLink>
 
-                    <button
-                        className="nc-toggle"
-                        aria-expanded={open}
-                        aria-label="Toggle navigation"
-                        onClick={toggle}
-                    >
-                        <span className="nc-hamburger" />
-                    </button>
-                </div>
+          <button
+            className="nc-toggle"
+            aria-expanded={open}
+            aria-label="Toggle navigation"
+            onClick={toggle}
+          >
+            <span className="nc-hamburger" />
+          </button>
+        </div>
 
-                <nav className={`nc-nav ${open ? "open" : ""}`} aria-label="Main">
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-                        <li>
-                            <a href="/about">Health Topics</a>
-                        </li>
-                        <li>
-                            <a href="/services">Services</a>
-                        </li>
-                        <li>
-                            <a href="/contact">Contact</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    );
+        <nav className={`nc-nav ${open ? "open" : ""}`} aria-label="Main">
+          <ul>
+            <li>
+              <NavLink to="/" onClick={close} end>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/healthtopics" onClick={close}>
+                Health Topics
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/services" onClick={close}>
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" onClick={close}>
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
 }
