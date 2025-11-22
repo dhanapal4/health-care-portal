@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from './WellnessGoalsForm.module.css';
 import useGoalsStore from '../../store/useGoalsStore';
 import { useNavigate } from 'react-router-dom';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const WellnessGoalsForm = () => {
     const [title, setTitle] = useState('');
@@ -21,6 +23,11 @@ const WellnessGoalsForm = () => {
     // Zustand Store
     const { addGoals } = useGoalsStore()
 
+    // Snackbar state
+    const [snackOpen, setSnackOpen] = useState(false);
+    const [snackMsg, setSnackMsg] = useState('');
+    const [snackSeverity, setSnackSeverity] = useState('success');
+
     const reset = () => {
         setTitle('');
         setDescription('');
@@ -33,10 +40,17 @@ const WellnessGoalsForm = () => {
         setSleepMinutes('');
     };
 
+    const handleSnackClose = (event, reason) => {
+        if (reason === 'clickaway') return;
+        setSnackOpen(false);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!title.trim()) {
-            alert('Please enter a title for the goal.');
+            setSnackMsg('Please enter a title for the goal.');
+            setSnackSeverity('error');
+            setSnackOpen(true);
             return;
         }
 
@@ -45,14 +59,18 @@ const WellnessGoalsForm = () => {
         if (predefined === 'steps') {
             const count = Number(stepsCount);
             if (!Number.isFinite(count) || count <= 0) {
-                alert('Please enter a valid steps count.');
+                setSnackMsg('Please enter a valid steps count.');
+                setSnackSeverity('error');
+                setSnackOpen(true);
                 return;
             }
             metric = { type: 'steps', count };
         } else if (predefined === 'activeTime') {
             const mins = Number(activeMinutes);
             if (!Number.isFinite(mins) || mins <= 0) {
-                alert('Please enter valid active minutes.');
+                setSnackMsg('Please enter valid active minutes.');
+                setSnackSeverity('error');
+                setSnackOpen(true);
                 return;
             }
             metric = { type: 'activeTime', minutes: mins };
@@ -60,7 +78,9 @@ const WellnessGoalsForm = () => {
             const hrs = Number(sleepHours || 0);
             const mins = Number(sleepMinutes || 0);
             if ((!Number.isFinite(hrs) || hrs < 0) || (!Number.isFinite(mins) || mins < 0 || mins >= 60) || (hrs === 0 && mins === 0)) {
-                alert('Please enter valid sleep hours/minutes (minutes 0-59).');
+                setSnackMsg('Please enter valid sleep hours/minutes (minutes 0-59).');
+                setSnackSeverity('error');
+                setSnackOpen(true);
                 return;
             }
             metric = { type: 'sleep', hours: hrs, minutes: mins };
@@ -75,9 +95,20 @@ const WellnessGoalsForm = () => {
             predefined: predefined || null,
             metric, // may be null if user didn't choose predefined option
         };
-        
 
-        addGoals(newGoal);
+        try {
+            addGoals(newGoal);
+            reset();
+            setSnackMsg('Wellness goal added');
+            setSnackSeverity('success');
+            setSnackOpen(true);
+            // optionally navigate to list after short delay
+            setTimeout(() => navigate('/list-goals'), 800);
+        } catch (err) {
+            setSnackMsg('Failed to add goal');
+            setSnackSeverity('error');
+            setSnackOpen(true);
+        }
     };
 
     return (
@@ -221,6 +252,17 @@ const WellnessGoalsForm = () => {
                     </button>
                 </div>
             </form>
+
+            <Snackbar
+                open={snackOpen}
+                autoHideDuration={4000}
+                onClose={handleSnackClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert onClose={handleSnackClose} severity={snackSeverity} sx={{ width: '100%' }}>
+                    {snackMsg}
+                </Alert>
+            </Snackbar>
         </div>
     );
 };
